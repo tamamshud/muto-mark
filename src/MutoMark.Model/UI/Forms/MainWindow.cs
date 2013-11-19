@@ -20,7 +20,7 @@ namespace MutoMark.Model
             new ToolStripMenuItem("Exit")
         };
 
-        public MainWindow()
+        public MainWindow(string[] args)
         {
             InitializeComponent();
             this.Visible = false;
@@ -33,7 +33,10 @@ namespace MutoMark.Model
 #if DEBUG
             this.OpenFile(@"..\..\..\..\Samples\github.md");
 #else
-            this.Open();
+            if(args.Length == 0)
+                this.Open();
+            else
+                this.OpenFile(args[0]);
 #endif
         }
 
